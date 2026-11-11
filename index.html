@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animal Surgery Log</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1 id="title">Animal Surgery Log</h1>
+      <p id="subtitle" class="muted"></p>
+    </div>
+    <div id="auth" class="auth"></div>
+  </header>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <main>
+    <section class="toolbar">
+      <input id="q" type="search" placeholder="Search animal ID, surgeon, region, probe, notes…" aria-label="Search">
+      <select id="typeFilter" aria-label="Filter by surgery type"></select>
+      <span class="spacer"></span>
+      <button id="exportBtn" class="btn">Export CSV</button>
+      <button id="newBtn" class="btn primary" hidden>+ New surgery</button>
+    </section>
+
+    <section class="grid">
+      <div class="card map-card">
+        <div class="card-head">
+          <h2>Target coordinates</h2>
+          <span class="muted small">Dorsal view, relative to bregma (mm)</span>
+        </div>
+        <div id="map" class="map"></div>
+        <div id="mapTip" class="tooltip" hidden></div>
+      </div>
+      <div class="card stats-card" id="stats"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Surgeries</h2>
+        <span id="count" class="muted small"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="list">
+          <thead>
+            <tr>
+              <th>Animal</th><th>Date</th><th>Type</th><th>Targets (AP / ML / DV, mm)</th>
+              <th>Surgeon</th><th>Status</th><th class="num">Photos</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="detailDlg" class="dlg"></dialog>
+  <dialog id="formDlg" class="dlg wide"></dialog>
+  <dialog id="loginDlg" class="dlg narrow"></dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
